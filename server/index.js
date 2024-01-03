@@ -52,6 +52,30 @@ app.get('/api/Employees', async (req, res) => {
     res.status(500).send(error.message);
   }
 });
+app.get('/api/Suppliers', async (req, res) => {
+  try {
+    oracledb.initOracleClient({ libDir: 'C:\\oraclexe\\instantclient_21_12' });
+    const connection = await oracledb.getConnection(dbConfig);
+    const result = await connection.execute('SELECT* from Suppliers');
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send(error.message);
+  }
+});
+app.get('/api/Customers', async (req, res) => {
+  try {
+    oracledb.initOracleClient({ libDir: 'C:\\oraclexe\\instantclient_21_12' });
+    const connection = await oracledb.getConnection(dbConfig);
+    const result = await connection.execute('SELECT* from Customers');
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send(error.message);
+  }
+});
 
 app.listen(PORT, function () {
   console.log('CORS-enabled web server listening on port 3000');

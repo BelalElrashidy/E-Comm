@@ -2,7 +2,7 @@
   <div class="card">
     <q-item>
       <q-item-section>
-        <h2>{{ data.firstName }} {{ data.lastName }}</h2>
+        <h2>{{ data[1] }} {{ data[2] }}</h2>
       </q-item-section>
     </q-item>
     <div class="card-body">
@@ -10,19 +10,19 @@
         <q-item-section>
           <q-item-label><strong>Contact Number:</strong></q-item-label>
         </q-item-section>
-        <q-item-section>{{ data.contactNumber }}</q-item-section>
+        <q-item-section>{{ data[3] }}</q-item-section>
       </q-item>
       <q-item>
         <q-item-section>
           <q-item-label><strong>Email:</strong></q-item-label>
         </q-item-section>
-        <q-item-section>{{ data.email }}</q-item-section>
+        <q-item-section>{{ data[4] }}</q-item-section>
       </q-item>
       <q-item>
         <q-item-section>
           <q-item-label><strong>Address:</strong></q-item-label>
         </q-item-section>
-        <q-item-section>{{ data.address }}</q-item-section>
+        <q-item-section>{{ data[5] }}</q-item-section>
       </q-item>
     </div>
   </div>

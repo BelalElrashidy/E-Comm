@@ -8,19 +8,18 @@
       <q-item>
         <q-card-title
           ><h3>
-            {{ item.name }}
+            {{ item[1] }}
           </h3>
         </q-card-title>
       </q-item>
-      <q-card-subtitle
-        >{{ item.quantity }} {{ item.unitOfMeasure }}</q-card-subtitle
-      >
+      <q-card-subtitle>{{ item[3] }} {{ item[2] }}</q-card-subtitle>
     </q-card-section>
 
-    <q-card-section class="flex row items-center justify-center">
+    <q-card-section class="flex col items-center justify-center">
       <q-card-main>
-        {{ item.description }}
+        {{ item[4] }}
       </q-card-main>
+      <q-card-subtitle>{{ item[5] }}</q-card-subtitle>
     </q-card-section>
   </q-card>
 </template>

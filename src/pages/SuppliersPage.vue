@@ -1,11 +1,10 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <SupplierCard :cardInfo="myCardInfo" />
-    <SupplierCard :cardInfo="myCardInfo"></SupplierCard>
-    <SupplierCard :cardInfo="myCardInfo"></SupplierCard>
-    <SupplierCard :cardInfo="myCardInfo"></SupplierCard>
-    <SupplierCard :cardInfo="myCardInfo"></SupplierCard>
-    <SupplierCard :cardInfo="myCardInfo"></SupplierCard>
+    <SupplierCard
+      v-for="myCardInfo in data"
+      :cardInfo="myCardInfo"
+      :key="myCardInfo[0]"
+    />
   </q-page>
 </template>
 
@@ -19,15 +18,14 @@ export default defineComponent({
   components: {
     SupplierCard,
   },
+  async mounted() {
+    this.$axios.get('https://localhost:3000/api/Suppliers').then((res) => {
+      this.data = res.data;
+    });
+  },
   data() {
     return {
-      myCardInfo: {
-        name: 'John Doe',
-        contactNumber: '123-456-7890',
-        email: 'john.doe@example.com',
-        address: '123 Main St, City',
-        contactPerson: 'Jane Doe',
-      },
+      data: [],
     };
   },
 });

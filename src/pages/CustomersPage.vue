@@ -1,11 +1,10 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <CustomerCard :data="userData"></CustomerCard>
-    <CustomerCard :data="userData"></CustomerCard>
-    <CustomerCard :data="userData"></CustomerCard>
-    <CustomerCard :data="userData"></CustomerCard>
-    <CustomerCard :data="userData"></CustomerCard>
-    <CustomerCard :data="userData"></CustomerCard>
+    <CustomerCard
+      v-for="userData in data"
+      :data="userData"
+      :key="userData[0]"
+    ></CustomerCard>
   </q-page>
 </template>
 
@@ -18,15 +17,14 @@ export default defineComponent({
   components: {
     CustomerCard,
   },
+  async mounted() {
+    this.$axios.get('https://localhost:3000/api/Customer').then((res) => {
+      this.data = res.data;
+    });
+  },
   data() {
     return {
-      userData: {
-        firstName: 'John',
-        lastName: 'Doe',
-        contactNumber: '123-456-7890',
-        email: 'john.doe@example.com',
-        address: '123 Main Street, Cityville',
-      },
+      data: [],
     };
   },
 });
