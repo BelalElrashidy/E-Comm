@@ -1,11 +1,10 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <employee-card :employee="employeeData"></employee-card>
-    <employee-card :employee="employeeData"></employee-card>
-    <employee-card :employee="employeeData"></employee-card>
-    <employee-card :employee="employeeData"></employee-card>
-    <employee-card :employee="employeeData"></employee-card>
-    <employee-card :employee="employeeData"></employee-card>
+    <employee-card
+      v-for="employeeData in data"
+      :employee="employeeData"
+      :key="employeeData"
+    ></employee-card>
   </q-page>
 </template>
 
@@ -18,17 +17,14 @@ export default defineComponent({
   components: {
     EmployeeCard,
   },
+  async mounted() {
+    this.$axios.get('localhost:3000/api/Employees').then((res) => {
+      this.data = res.data;
+    });
+  },
   data() {
     return {
-      employeeData: {
-        firstName: 'John',
-        lastName: 'Doe',
-        position: 'Software Engineer',
-        department: 'Engineering',
-        contactNumber: '123-456-7890',
-        email: 'john.doe@example.com',
-        hireDate: '2022-01-01',
-      },
+      data: [],
     };
   },
 });
