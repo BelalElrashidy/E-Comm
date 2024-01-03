@@ -3,7 +3,7 @@
     <CustomerCard
       v-for="userData in data"
       :data="userData"
-      :key="userData[0]"
+      :key="userData"
     ></CustomerCard>
   </q-page>
 </template>
@@ -18,7 +18,7 @@ export default defineComponent({
     CustomerCard,
   },
   async mounted() {
-    this.$axios.get('https://localhost:3000/api/Customer').then((res) => {
+    this.$axios.get('http://localhost:3000/api/Customer').then((res) => {
       this.data = res.data;
     });
   },

@@ -3,7 +3,7 @@
     <employee-card
       v-for="employeeData in data"
       :employee="employeeData"
-      :key="employeeData[0]"
+      :key="employeeData"
     ></employee-card>
   </q-page>
 </template>
@@ -18,7 +18,7 @@ export default defineComponent({
     EmployeeCard,
   },
   async mounted() {
-    this.$axios.get('https://localhost:3000/api/Employees').then((res) => {
+    this.$axios.get('http://localhost:3000/api/Employees').then((res) => {
       this.data = res.data;
     });
   },

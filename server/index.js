@@ -64,7 +64,7 @@ app.get('/api/Suppliers', async (req, res) => {
     res.status(500).send(error.message);
   }
 });
-app.get('/api/Customers', async (req, res) => {
+app.get('/api/Customer', async (req, res) => {
   try {
     oracledb.initOracleClient({ libDir: 'C:\\oraclexe\\instantclient_21_12' });
     const connection = await oracledb.getConnection(dbConfig);

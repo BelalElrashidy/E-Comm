@@ -3,7 +3,7 @@
     <SupplierCard
       v-for="myCardInfo in data"
       :cardInfo="myCardInfo"
-      :key="myCardInfo[0]"
+      :key="myCardInfo"
     />
   </q-page>
 </template>
@@ -19,7 +19,7 @@ export default defineComponent({
     SupplierCard,
   },
   async mounted() {
-    this.$axios.get('https://localhost:3000/api/Suppliers').then((res) => {
+    this.$axios.get('http://localhost:3000/api/Suppliers').then((res) => {
       this.data = res.data;
     });
   },

@@ -3,7 +3,7 @@
     <material-card
       v-for="item in data"
       :item="item"
-      :key="item[0]"
+      :key="item"
     ></material-card>
   </q-page>
 </template>
@@ -18,7 +18,7 @@ export default defineComponent({
     MaterialCard,
   },
   async mounted() {
-    this.$axios.get('https://localhost:3000/api/Materials').then((res) => {
+    this.$axios.get('http://localhost:3000/api/Materials').then((res) => {
       this.data = res.data;
     });
   },
